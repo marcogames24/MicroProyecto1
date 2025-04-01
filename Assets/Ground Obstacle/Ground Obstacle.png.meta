@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3eeaa47938329084cbe85bb3678b2a40
+guid: 97be9f575f86bad4dac3e3d3a5840901
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Freart_0
+      name: Ground Obstacle_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 63
-        width: 240
-        height: 137
+        x: 23
+        y: 127
+        width: 474
+        height: 254
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a43b3e5e5fe0f648b9988f8c6975171
-      internalID: -779943321
+      spriteID: 428a6e61e2b0e1142917e78c2cfbb114
+      internalID: -1862946718
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fe11f459d9d7de243a22a3a5dec7abac
+    spriteID: 393ca26c6d0f02145a4534fbc8607fa1
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Freart_0: -779943321
+      Ground Obstacle_0: -1862946718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

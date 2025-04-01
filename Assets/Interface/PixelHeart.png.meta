@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3eeaa47938329084cbe85bb3678b2a40
+guid: c5c9f3e82f2f1c346a1bc234f8a87e46
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Freart_0
+      name: PixelHeart_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 63
-        width: 240
-        height: 137
+        x: 49
+        y: 38
+        width: 156
+        height: 169
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a43b3e5e5fe0f648b9988f8c6975171
-      internalID: -779943321
+      spriteID: 7166d5f23232ccb41abfb150bb005573
+      internalID: -2072367986
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fe11f459d9d7de243a22a3a5dec7abac
+    spriteID: a12042817ef2dfb42a0124d829a5d184
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Freart_0: -779943321
+      PixelHeart_0: -2072367986
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
