@@ -44,7 +44,27 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+    //Referencia al codigo HealingItem
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+
+        // Asegúrate de que la salud no exceda el máximo permitido
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        UpdateHealthUI(); // Actualiza la interfaz de salud
+        Debug.Log($"Salud del jugador: {currentHealth}");
+    }
+
+
+
+
+
 }
+
 
 
 

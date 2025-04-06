@@ -1,10 +1,25 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShopSystem : MonoBehaviour
 {
  
-    public int playerCoins = 10; // Monedas iniciales del jugador
+    public int playerCoins = 0; // Monedas recolectadas por el jugador
     [SerializeField] private InventorySystem inventorySystem; // Referencia al sistema de inventario
+    [SerializeField] private Text coinText; // Texto que muestra las monedas
+
+    void Start()
+    {
+        UpdateCoinsUI(); // Inicializa el texto con las monedas actuales
+    }
+
+    // **Nuevo método para añadir monedas**
+    public void AddCoins(int amount)
+    {
+        playerCoins += amount; // Incrementa las monedas del jugador
+        UpdateCoinsUI(); // Actualiza el texto de las monedas
+        Debug.Log($"Monedas recolectadas: {playerCoins}");
+    }
+
     public void BuyItem(GameObject button)
     {
         // Obtener el nombre del objeto desde el botón
@@ -14,7 +29,7 @@ public class ShopSystem : MonoBehaviour
         Transform priceTextTransform = button.transform.Find("PriceText");
         if (priceTextTransform != null)
         {
-            string priceText = priceTextTransform.GetComponent<UnityEngine.UI.Text>().text;
+            string priceText = priceTextTransform.GetComponent<Text>().text;
 
             if (int.TryParse(priceText, out int itemPrice)) // Validar formato correcto
             {
@@ -23,11 +38,12 @@ public class ShopSystem : MonoBehaviour
                 {
                     playerCoins -= itemPrice; // Deduce las monedas del jugador
                     inventorySystem.AddItem(itemName); // Añadir el objeto al inventario
+                    UpdateCoinsUI(); // Actualiza el texto de las monedas
                     Debug.Log($"Has comprado {itemName} por {itemPrice} monedas. Monedas restantes: {playerCoins}");
                 }
                 else
                 {
-                    Debug.Log("No tienes suficientes monedas.");
+                    Debug.Log("No tienes suficientes monedas para comprar este objeto.");
                 }
             }
             else
@@ -41,7 +57,25 @@ public class ShopSystem : MonoBehaviour
         }
     }
 
+    private void UpdateCoinsUI()
+    {
+        if (coinText != null)
+        {
+            coinText.text = $"Coins: {playerCoins}"; // Actualiza el texto dinámicamente
+        }
+        else
+        {
+            Debug.LogWarning("No se ha asignado el texto de monedas en el Inspector.");
+        }
+    }
 }
+
+
+
+
+
+
+
 
 
 

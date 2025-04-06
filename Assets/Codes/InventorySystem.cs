@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic; // Necesario para listas
+using UnityEngine.UI;
 public class InventorySystem : MonoBehaviour
 {
-  
+ 
     [SerializeField] private GameObject[] inventorySlots; // Referencia a las casillas del inventario
     private List<string> inventoryItems = new List<string>(); // Lista de objetos en el inventario
-   
+
     [SerializeField] private Sprite freartSprite; // Sprite para FREART
     [SerializeField] private Sprite fruthingSprite; // Sprite para FRUTHING
 
@@ -30,11 +31,11 @@ public class InventorySystem : MonoBehaviour
             if (i < inventoryItems.Count)
             {
                 inventorySlots[i].SetActive(true); // Activa la casilla
-                var imageComponent = inventorySlots[i].GetComponentInChildren<UnityEngine.UI.Image>();
+                var imageComponent = inventorySlots[i].GetComponentInChildren<Image>();
                 if (imageComponent != null)
                 {
-                    // Cambiar la imagen del objeto. Aquí debes asignar un Sprite según el nombre del objeto.
-                    imageComponent.sprite = GetItemSprite(inventoryItems[i]); // Método para obtener el Sprite basado en el nombre del objeto.
+                    // Cambiar la imagen del objeto según el nombre del objeto comprado
+                    imageComponent.sprite = GetItemSprite(inventoryItems[i]);
                 }
                 else
                 {
@@ -54,15 +55,16 @@ public class InventorySystem : MonoBehaviour
         switch (itemName)
         {
             case "FREART":
-                return freartSprite; // Asegúrate de tener este Sprite definido en tu script.
+                return freartSprite; // Sprite definido para FREART
             case "FRUTHING":
-                return fruthingSprite; // Asegúrate de tener este Sprite definido en tu script.
+                return fruthingSprite; // Sprite definido para FRUTHING
             default:
                 Debug.LogError($"No se encontró un Sprite para el objeto: {itemName}");
                 return null;
         }
     }
-
 }
+
+
 
 

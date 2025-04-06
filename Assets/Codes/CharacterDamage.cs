@@ -11,8 +11,8 @@ public class CharacterDamage : MonoBehaviour
 
     private void Update()
     {
-        // Detecta el ataque al presionar Z
-        if (Input.GetKeyDown(KeyCode.Z))
+        // Detecta el ataque al presionar O
+        if (Input.GetKeyDown(KeyCode.O))
         {
             PerformAttack();
         }

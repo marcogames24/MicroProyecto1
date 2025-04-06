@@ -14,7 +14,6 @@ public class CoinPickUp : MonoBehaviour
         // Inicializa la interfaz con el número de monedas
         coinText.text = "Coins: " + coinCount;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin")) // Comprueba si el objeto es una moneda
@@ -27,6 +26,14 @@ public class CoinPickUp : MonoBehaviour
 
                 // Actualiza el texto en pantalla
                 coinText.text = "Coins: " + coinCount;
+
+                // **Conectar al sistema de tienda usando el método recomendado**
+                ShopSystem shopSystem = FindFirstObjectByType<ShopSystem>();
+                if (shopSystem != null)
+                {
+                    shopSystem.AddCoins(1); // Sincronizar las monedas recolectadas
+                    Debug.Log($"Sincronizado con la tienda. Monedas actuales: {shopSystem.playerCoins}");
+                }
             }
             else
             {
@@ -34,6 +41,8 @@ public class CoinPickUp : MonoBehaviour
             }
         }
     }
+
+
 }
 
 
