@@ -2,39 +2,60 @@ using UnityEngine;
 
 public class CharacterJump : MonoBehaviour
 {
-
+    
     public float jumpForce = 5f; // Fuerza del salto
-    private Rigidbody rb; // Referencia al Rigidbody del jugador
+    private Rigidbody rb; // Referencia al Rigidbody del personaje
+    private Animator animator; // Referencia al Animator
+    private bool isFacingRight = true; // Dirección del personaje
 
     void Start()
     {
-        // Obtener el componente Rigidbody del jugador
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
 
-        if (rb == null)
+        if (rb == null) Debug.LogError("El personaje no tiene Rigidbody.");
+        if (animator == null) Debug.LogError("El personaje no tiene Animator.");
+    }
+    void Jump()
+    {
+        if (rb != null)
         {
-            Debug.LogError("El jugador no tiene un componente Rigidbody asignado.");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            // Activar la animación de salto según la dirección
+            if (isFacingRight)
+            {
+                animator.SetTrigger("JumpRight"); // Cambiamos a SetTrigger
+                animator.ResetTrigger("JumpLeft"); // Evita conflictos
+                Debug.Log("JumpRight activado");
+            }
+            else
+            {
+                animator.SetTrigger("JumpLeft"); // Cambiamos a SetTrigger
+                animator.ResetTrigger("JumpRight"); // Evita conflictos
+                Debug.Log("JumpLeft activado");
+            }
+
+            // Activar el trigger de salto
+            animator.SetTrigger("JumpTrigger");
         }
     }
 
     void Update()
     {
-        // Detectar si se presiona la tecla P
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Jump(); // Llamar a la función de salto
+            Jump();
         }
-    }
 
-    void Jump()
-    {
-        if (rb != null)
+        // Solo desactivar la animación de salto cuando el personaje ha aterrizado completamente
+        if (rb.linearVelocity.y == 0)
         {
-            // Aplicar una fuerza hacia arriba
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            Debug.Log("El jugador ha saltado.");
+            animator.ResetTrigger("JumpTrigger"); // Resetea el trigger para evitar activaciones repetidas
         }
     }
 }
+
+
 
 
