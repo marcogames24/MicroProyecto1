@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharacterJump : MonoBehaviour
 {
-    
+
     public float jumpForce = 5f; // Fuerza del salto
     private Rigidbody rb; // Referencia al Rigidbody del personaje
     private Animator animator; // Referencia al Animator
@@ -10,11 +10,39 @@ public class CharacterJump : MonoBehaviour
 
     void Start()
     {
+        InicialSettings();
+    }
+
+    void Update()
+    {
+        InputSettings();
+        // if(Input.GetKey(KeyCode.P))
+        // if(Input.GetKeyUp(KeyCode.P))
+        // Solo desactivar la animación de salto cuando el personaje ha aterrizado completamente
+        if (rb.linearVelocity.y == 0)
+        {
+            animator.ResetTrigger("JumpTrigger"); // Resetea el trigger para evitar activaciones repetidas
+        }
+    }
+    private void InicialSettings() 
+    {
+
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
         if (rb == null) Debug.LogError("El personaje no tiene Rigidbody.");
         if (animator == null) Debug.LogError("El personaje no tiene Animator.");
+
+
+    }
+    private void InputSettings() 
+    {
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Jump();
+        }
+
     }
     void Jump()
     {
@@ -41,19 +69,7 @@ public class CharacterJump : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Jump();
-        }
-
-        // Solo desactivar la animación de salto cuando el personaje ha aterrizado completamente
-        if (rb.linearVelocity.y == 0)
-        {
-            animator.ResetTrigger("JumpTrigger"); // Resetea el trigger para evitar activaciones repetidas
-        }
-    }
+    
 }
 
 

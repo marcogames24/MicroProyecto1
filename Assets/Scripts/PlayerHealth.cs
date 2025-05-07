@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int maxHealth = 3; // Máxima cantidad de corazones
+    public int maxHealth = 10; // Máxima cantidad de corazones
     public int currentHealth; // Salud actual
     public Image[] heartIcons; // Array de imágenes de corazones (directamente en el Canvas)
 
