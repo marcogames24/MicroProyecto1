@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
   
@@ -47,6 +47,11 @@ public class PauseMenu : MonoBehaviour
         
         Application.Quit();
         Debug.Log("Saliendo del juego...");
+    }
+    public void RestartLevel()
+    {
+        Time.timeScale = 1; // Restaurar el tiempo
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reiniciar la escena actual
     }
 }
 
