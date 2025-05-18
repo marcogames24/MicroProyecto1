@@ -37,6 +37,15 @@ public class VictorySystem : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit(); // Cierra la aplicación (solo funciona en una build)
     }
+
+    public void NextLevel2()// Este método esta orientado para el nivel1 del juego//
+                            //en la victory panel del nivel 1 cuando el jugador quiera presionar el botón de
+                            //avanzar nivel //este se encargara de vargar al nivel 2 del juego es
+    {
+        SceneManager.LoadScene("Level2 IceZone"); //Carga la escena donde se desarrolla el nivel2 del juego
+        Debug.Log("Cargando el nivel2 IceZone");//Un mensaje para verificar que el codigo esta funcionando
+    }
+
 }
 
 
