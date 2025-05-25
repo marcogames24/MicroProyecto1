@@ -6051,8 +6051,8 @@ MonoBehaviour:
   - {fileID: 1937664205}
   - {fileID: 179498507}
   - {fileID: 958484076}
-  freartSprite: {fileID: -779943321, guid: 3eeaa47938329084cbe85bb3678b2a40, type: 3}
-  fruthingSprite: {fileID: 1102846045, guid: 87ab041ad987996429e0a506be8146c7, type: 3}
+  freartSprite: {fileID: 21300000, guid: 3eeaa47938329084cbe85bb3678b2a40, type: 3}
+  fruthingSprite: {fileID: 21300000, guid: 87ab041ad987996429e0a506be8146c7, type: 3}
 --- !u!224 &1720513090
 RectTransform:
   m_ObjectHideFlags: 0

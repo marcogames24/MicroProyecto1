@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         Object.FindFirstObjectByType<AttackSystem>().UpdateDirection(movement.x);//este apartado tiene relacion con el codigo
-        //implementado AttackSystem esto permitira que el juador cuando presione la tecla z este realice las animaciones de ataque 
+        //implementado AttackSystem esto permitira que el juador cuando presione la tecla o este realice las animaciones de ataque 
         //eso si el truco es que cuando se mueve a la izqueirda y sueltes la direccion si te quedaste en la izquerida el ataque izqueirda 
         //se realizara, tambien aplca en la direccion de la derecha.
 
