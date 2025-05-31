@@ -9,7 +9,7 @@ public class NewCharacterJump : MonoBehaviour
     private bool isJumping = true; // Dirección del personaje
     private float lastHorizontalDirection = 1; // esto hace referencia a la direccion en la que se encuentra el jugador
                                                //actualmente
-    float CharacterOriginalScaleX = 14.467f; //Como queremos que el personaje mantenga su escala en pantalla lo que hacemos aqui 
+    float CharacterOriginalScaleX; //Como queremos que el personaje mantenga su escala en pantalla lo que hacemos aqui 
                                              //es que creamos esta varibale para que cuando cambie de dirección solo el la posición en X cambie y el sprite lo haga también
     void Start()
     {
@@ -49,7 +49,7 @@ public class NewCharacterJump : MonoBehaviour
             animator.SetBool("IsJumping", false);
         }
 
-        transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
+      //  transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
 
     }
 
@@ -60,7 +60,7 @@ public class NewCharacterJump : MonoBehaviour
         animator.SetBool("IsJumping", true);
 
         // Aplicar dirección al personaje sin afectar el sprite
-        transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
+      //  transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
     }
 
 

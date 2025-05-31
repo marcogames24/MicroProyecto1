@@ -14,7 +14,7 @@ public class SpearProyectile : MonoBehaviour
         {
             Debug.Log("Detectado como enemigo por LayerMask: " + other.name); // Confirma que está en la capa correcta
 
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            BossHealth enemyHealth = other.GetComponent<BossHealth>();
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damage);

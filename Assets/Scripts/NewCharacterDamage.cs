@@ -8,7 +8,7 @@ public class NewCharacterDamage : MonoBehaviour
     public Animator animator;
     public Rigidbody rb; // Referencia al Rigidbody del personaje
     private float lastHorizontalDirection = 1;
-    float CharacterOriginalScaleX = 14.467f;
+    float CharacterOriginalScaleX ;
 
     private void Update()
     {
@@ -31,7 +31,7 @@ public class NewCharacterDamage : MonoBehaviour
         }
 
         // Aplicar la dirección al personaje manteniendo su escala original
-        transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
+       // transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
     }
 
     void PerformAttack()

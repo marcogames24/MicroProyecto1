@@ -2,18 +2,27 @@ using UnityEngine;
 
 public class IceFloorDamage : MonoBehaviour
 {
-    public int damageFloor = 0;//En la pantalla antes de la ejecucion se define cuanto daño
-                               //ocasiona el suelo al enemigo
-    
-    public float timeLapseDamage = 0f;// Esta variable se encargara de definir por cuanto
-                                // tiempo el suelo le quitara vida
-                                // al jugador , dando la sensación de que esta
-                                // perdiendo vida por hipotermia.
+    public int damageFloor = 1; // Daño cada ciclo
+    public float damageInterval = 120f; // Intervalo de daño en segundos (2 minutos)
+    private PlayerHealth playerHealth;
 
-    private void OnTriggerEnter(Collider other)//Aqui definiremos como se aplicara el daño del suelo al jugador
-        
+    private void Start()
     {
-        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<PlayerHealth>(); //  Detecta automáticamente el script en el jugador
 
+        if (playerHealth != null)
+        {
+            InvokeRepeating("ApplyColdDamage", damageInterval, damageInterval); //Aplica daño progresivo sin tocar `PlayerHealth`
+        }
     }
+
+    private void ApplyColdDamage()
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(damageFloor); // Llama a `TakeDamage()` directamente en `PlayerHealth`
+            Debug.Log("El jugador pierde vida por frío. Vida actual: " + playerHealth.currentHealth);
+        }
+    }
+
 }

@@ -13,10 +13,34 @@ public class NewCharacterMovement : MonoBehaviour
     private float lastHorizontalDirection = 1; // esto hace referencia a la direccion en la que se encuentra el jugador
                                                //actualmente
     
-    float CharacterOriginalScaleX = 14.467f; //Como queremos que el personaje mantenga su escala en pantalla lo que hacemos aqui 
-    //es que creamos esta varibale para que cuando cambie de dirección solo el la posición en X cambie y el sprite lo haga también
+    float CharacterOriginalScaleX; //Como queremos que el personaje mantenga su escala en pantalla lo que hacemos aqui 
+                                   //es que creamos esta varibale para que cuando cambie de dirección solo el la posición en X cambie y el sprite lo haga también
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
+        Movement();
+        FlipSprite();
+
+       
+    }
+    void FixedUpdate()
+    {
+        // Aplica movimiento normalizado en los ejes X y Z
+        Vector3 move = movement.normalized * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + move);
+    }
+    void Movement() 
+    {
+
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         Object.FindFirstObjectByType<AttackSystem>().UpdateDirection(movement.x);
@@ -33,31 +57,34 @@ public class NewCharacterMovement : MonoBehaviour
         float speed = movement.magnitude; // Calcula velocidad del personaje
         animator.SetFloat("Speed", speed); // Controla el Blend Tree en el Animator
 
-        if (movement.x > 0) 
-        {
-
-            lastHorizontalDirection = 1;//aqui quiere decir que si se realiza el movimiento en la derecha es la dirección donde
-                                        //se movera el personaje
-            
-        }
-        else if (movement.x<0) 
-        
-        {
-            lastHorizontalDirection = -1;//aqui quiere decir que si se realiza el movimiento en el lado opuesto el sprite cambia a izquierdo
-                                         
-           
-        }
-
-        transform.localScale = new Vector3(lastHorizontalDirection*CharacterOriginalScaleX, 14.467f, 14.467f);//Si el personaje ahora se encuentra en el lado izquierdo cuando
-                                                                                                              //se mueve su sprite cambia de estar en positivo , que es el lado derecho, a negativo que es el lado izquierdo
         animator.SetFloat("HorizontalDirection", lastHorizontalDirection);
     }
-    void FixedUpdate()
+    void FlipSprite() 
     {
-        // Aplica movimiento normalizado en los ejes X y Z
-        Vector3 move = movement.normalized * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + move);
-    }
 
+
+        if (movement.x > 0)
+        {
+
+            //  lastHorizontalDirection = 1;//aqui quiere decir que si se realiza el movimiento en la derecha es la dirección donde
+            //se movera el personaje
+
+            spriteRenderer.flipX = false;
+
+        }
+        else if (movement.x < 0)
+
+        {
+            //lastHorizontalDirection = -1;//aqui quiere decir que si se realiza el movimiento en el lado opuesto el sprite cambia a izquierdo
+
+            spriteRenderer.flipX = true;
+        }
+
+                                                                                                             //se mueve su sprite cambia de estar en positivo , que es el lado derecho, a negativo que es el lado izquierdo
+        
+
+
+
+    }
 
 }
