@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
- 
     public HealingItem healingItem; // Referencia al objeto sanador que representa este ítem
     private Button button; // Botón del inventario para detectar clics
 
@@ -35,6 +34,7 @@ public class InventoryItem : MonoBehaviour
             Debug.LogWarning("No se pudo usar el objeto. Asegúrate de que está correctamente configurado.");
         }
     }
+
 }
 
 

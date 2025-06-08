@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class IceTikiProyectile : MonoBehaviour
 {
    
@@ -21,11 +21,19 @@ public class IceTikiProyectile : MonoBehaviour
                                 // sean infinitos
 
     private float nextFireTime; //esta variable se utiliza para controlar el proximo disparo que realiza el proyectil
-
+    private Queue<GameObject> projectilePool = new Queue<GameObject>();
     void Start()
     {
         nextFireTime = Time.time + fireRate; // Este es un temporizador de disparo, que se usa para realizar el primer
-                                             // disparo del proyectil
+                                             // disparo del
+        for (int i = 0; i < 10; i++) // Ajusta este número según las necesidades
+        {
+            GameObject projectile = Instantiate(IceTikiProyectilePrefab);
+            projectile.SetActive(false);
+            projectilePool.Enqueue(projectile);
+        }
+        Debug.Log("Pool de proyectiles inicializado con " + projectilePool.Count + " proyectiles.");
+
     }
 
     void Update()
@@ -40,46 +48,76 @@ public class IceTikiProyectile : MonoBehaviour
 
     void Shoot()
     {
+        GameObject snowball = GetProjectileFromPool(); //  Usar proyectil reciclado en vez de instanciar uno nuevo
 
-            GameObject snowball = Instantiate(IceTikiProyectilePrefab, spawnPoint.position, spawnPoint.rotation);
-            snowball.SetActive(true);        
-        
+        if (snowball != null)
+        {
+            snowball.transform.position = spawnPoint.position; // Mantener la dirección según `spawnPoint`
+            snowball.transform.rotation = spawnPoint.rotation;
+            snowball.SetActive(true);
+
             Rigidbody rb = snowball.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.linearVelocity = spawnPoint.forward * speed; // Como en la escena de juego existen 2 IceTikis 
-                                                                // con diferentes orientaciones, el  disparo se
-                                                                //realizara en base a la direccion del Spawn
+                rb.linearVelocity = spawnPoint.forward * speed; //  Mantiene la dirección según el enemigo
+
+                Debug.Log(" Proyectil disparado con velocidad " + rb.linearVelocity);
+            }
+            else
+            {
+                Debug.LogError(" El proyectil no tiene Rigidbody. Asegúrate de que el prefab tiene uno.");
             }
 
-        Destroy(snowball, lifetime); //aqui permitira la destruccion del proyectil luego de que transcurra 
-                                     //cierto tiempo , que le definamos al principio
+            StartCoroutine(DeactivateProjectile(snowball, lifetime)); //  Desactivar después de un tiempo
+        }
+        else
+        {
+            Debug.LogError(" No se encontró un proyectil disponible en la pool.");
+        }
+    }
 
-        //GameObject snowball = Instantiate(IceTikiProyectilePrefab, spawnPoint.position, Quaternion.identity);
-        //Rigidbody rb = snowball.GetComponent<Rigidbody>();
+    private GameObject GetProjectileFromPool()
+    {
+        if (projectilePool.Count > 0)
+        {
+            GameObject projectile = projectilePool.Dequeue(); //  Recuperar un proyectil de la cola
+            return projectile;
+        }
 
-        //if (rb != null)
-        //{
-        //    rb.linearVelocity = transform.forward * speed; // Mueve el proyectil en línea recta
-        //}
+        // Si no hay proyectiles disponibles, se crea uno nuevo y se agrega a la cola
+        GameObject newProjectile = Instantiate(IceTikiProyectilePrefab);
+        newProjectile.SetActive(false);
+        projectilePool.Enqueue(newProjectile);
+        return newProjectile;
+    }
 
-        //Destroy(snowball, lifetime); //aqui permitira la destruccion del proyectil luego de que transcurra 
-        //                            //cierto tiempo , que le definamos al principio
+
+    private System.Collections.IEnumerator DeactivateProjectile(GameObject projectile, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        projectile.SetActive(false); //  Se desactiva en vez de destruirse
+        projectilePool.Enqueue(projectile); //  Se vuelve a agregar al pool
+
+        Debug.Log(" Proyectil reciclado y listo para ser reutilizado.");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Si el proyectil golpea al jugador
+        if (other.CompareTag("Player"))
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(damage); // Aplica la cantidad de daño que le hayamos definido anteriormente
-                                                 // al jugador 
+                playerHealth.TakeDamage(damage);
             }
-            Destroy(gameObject); // Destruye el proyectil luego de que sea impactado por el jugador
+
+            gameObject.SetActive(false); //  Se desactiva en vez de destruirse
+            projectilePool.Enqueue(gameObject); // Se recicla para futuros disparos
+
+            Debug.Log(" Proyectil impactó al jugador y fue reciclado.");
         }
     }
+
 }
 
 

@@ -8032,6 +8032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 427683533}
   - component: {fileID: 427683532}
+  - component: {fileID: 427683534}
   m_Layer: 0
   m_Name: HeatZone
   m_TagString: Untagged
@@ -8054,11 +8055,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &427683533
 Transform:
@@ -8075,6 +8076,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427683534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427683531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &451182240
 GameObject:
   m_ObjectHideFlags: 0
@@ -8389,7 +8402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec857a62e07d814eb24c670e2282db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingItem: {fileID: -8709008029200179670, guid: f3c39c5267666c94ca5fdcddfb52694c, type: 3}
+  healingItem: {fileID: 0}
 --- !u!114 &455907655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8506,6 +8519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505917910}
   - component: {fileID: 505917909}
+  - component: {fileID: 505917911}
   m_Layer: 0
   m_Name: HeatZone (4)
   m_TagString: Untagged
@@ -8532,7 +8546,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &505917910
 Transform:
@@ -8549,6 +8563,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505917911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505917908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531255008
 GameObject:
   m_ObjectHideFlags: 0
@@ -14346,6 +14372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageFloor: 1
   damageInterval: 10
+  spriteRenderer: {fileID: 0}
 --- !u!1 &580699734
 GameObject:
   m_ObjectHideFlags: 0
@@ -14584,7 +14611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831583573906707609, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalScale.x
@@ -14600,11 +14627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 139.78
+      value: 140.61
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: -10.44
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14695,7 +14722,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   lifetime: 4
-  fireRate: 1
+  fireRate: 3
 --- !u!54 &654831842
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14899,7 +14926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec857a62e07d814eb24c670e2282db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingItem: {fileID: -8709008029200179670, guid: f3c39c5267666c94ca5fdcddfb52694c, type: 3}
+  healingItem: {fileID: 0}
 --- !u!114 &679407447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28720,7 +28747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3831583573906707609, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalScale.x
@@ -28740,11 +28767,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: -12.4
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.64
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 6616969592503518908, guid: 221a20b1b648f884f89e1c72eb11ff7f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28810,7 +28837,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   lifetime: 4
-  fireRate: 1
+  fireRate: 3
 --- !u!54 &1214724152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29504,6 +29531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366199659}
   - component: {fileID: 1366199658}
+  - component: {fileID: 1366199660}
   m_Layer: 0
   m_Name: HeatZone (3)
   m_TagString: Untagged
@@ -29530,7 +29558,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &1366199659
 Transform:
@@ -29547,6 +29575,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1366199660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366199657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1408314885
 GameObject:
   m_ObjectHideFlags: 0
@@ -29557,6 +29597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408314887}
   - component: {fileID: 1408314886}
+  - component: {fileID: 1408314888}
   m_Layer: 0
   m_Name: HeatZone (2)
   m_TagString: Untagged
@@ -29583,7 +29624,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &1408314887
 Transform:
@@ -29600,6 +29641,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408314888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408314885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1419038513
 GameObject:
   m_ObjectHideFlags: 0
@@ -32400,7 +32453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1741172366
 Transform:
   m_ObjectHideFlags: 0
@@ -32409,13 +32462,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741172365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: -73.9, y: 3.04, z: 3.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
 --- !u!1 &1746953687
 GameObject:
   m_ObjectHideFlags: 0
@@ -34005,7 +34058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1900870092
 Transform:
   m_ObjectHideFlags: 0
@@ -39035,7 +39088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec857a62e07d814eb24c670e2282db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingItem: {fileID: -8709008029200179670, guid: f3c39c5267666c94ca5fdcddfb52694c, type: 3}
+  healingItem: {fileID: 0}
 --- !u!114 &1909997960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39194,7 +39247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec857a62e07d814eb24c670e2282db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingItem: {fileID: -8709008029200179670, guid: f3c39c5267666c94ca5fdcddfb52694c, type: 3}
+  healingItem: {fileID: 0}
 --- !u!114 &1932014051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44438,6 +44491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118882366}
   - component: {fileID: 2118882365}
+  - component: {fileID: 2118882367}
   m_Layer: 0
   m_Name: HeatZone (5)
   m_TagString: Untagged
@@ -44464,7 +44518,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &2118882366
 Transform:
@@ -44481,6 +44535,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118882367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118882364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2122142120
 GameObject:
   m_ObjectHideFlags: 0
@@ -44739,6 +44805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2134056821}
   - component: {fileID: 2134056820}
+  - component: {fileID: 2134056822}
   m_Layer: 0
   m_Name: HeatZone (1)
   m_TagString: Untagged
@@ -44765,7 +44832,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.8366529
+  m_Radius: 2
   m_Center: {x: 0, y: 1.3366529, z: 0}
 --- !u!4 &2134056821
 Transform:
@@ -44776,12 +44843,24 @@ Transform:
   m_GameObject: {fileID: 2134056819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.2, y: -0.94495, z: 40.53}
+  m_LocalPosition: {x: 8.2, y: -0.94495, z: 39.37}
   m_LocalScale: {x: 2.6122, y: 2.6122, z: 2.6122}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2134056822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134056819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad1f94bd4355db488ed970241d4ed3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2136035990
 GameObject:
   m_ObjectHideFlags: 0

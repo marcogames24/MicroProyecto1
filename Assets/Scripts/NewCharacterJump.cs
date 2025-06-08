@@ -25,6 +25,7 @@ public class NewCharacterJump : MonoBehaviour
         // Detectar entrada de salto
         if (Input.GetKeyDown(KeyCode.P) && !isJumping)
         {
+            Debug.Log("Salto");
             Jump();
         }
 
@@ -58,9 +59,10 @@ public class NewCharacterJump : MonoBehaviour
         isJumping = true;
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetBool("IsJumping", true);
+        Debug.Log("¡El personaje ha saltado!"); // Mensaje en la consola de Unity
 
         // Aplicar dirección al personaje sin afectar el sprite
-      //  transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
+        //  transform.localScale = new Vector3(lastHorizontalDirection * CharacterOriginalScaleX, transform.localScale.y, transform.localScale.z);
     }
 
 
